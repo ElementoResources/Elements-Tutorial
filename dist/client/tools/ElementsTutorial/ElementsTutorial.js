@@ -26,12 +26,12 @@ function TutorialPage_StepsListItem(props) {
     const {Editor, Preview} = Elemento
     const ShowMe_action = React.useCallback(async () => {
         await Editor[$item.action.command](...$item.action.arguments)
-    }, [])
+    }, [$item])
 
     return React.createElement(React.Fragment, null,
         React.createElement(Layout, {path: pathWith('StepLayout'), horizontal: true, wrap: false},
             React.createElement(TextElement, {path: pathWith('StepText')}, $item.text),
-            React.createElement(Button, {path: pathWith('ShowMe'), content: 'Show Me', appearance: 'link', show: $item.action, action: ShowMe_action}),
+            React.createElement(Button, {path: pathWith('ShowMe'), content: 'Show Me', appearance: 'link', show: !!$item.action, action: ShowMe_action}),
     ),
     )
 }
@@ -39,13 +39,20 @@ function TutorialPage_StepsListItem(props) {
 
 function TutorialPage(props) {
     const pathWith = name => props.path + '.' + name
-    const {Page, TextElement, Data, Layout, ListElement} = Elemento.components
+    const {Page, TextElement, Data, Layout, ListElement, Button} = Elemento.components
+    const {ItemAfter} = Elemento.globalFunctions
     const {Editor, Preview} = Elemento
+    const {Set} = Elemento.appFunctions
     const TutData = Elemento.useObjectState(pathWith('TutData'), new Data.State({value: TutorialData()}))
-    const SectionList = Elemento.useObjectState(pathWith('SectionList'), new ListElement.State({selectedItem: 0}))
+    const SectionList_selectAction = React.useCallback(async ($item) => {
+        await (await document.getElementById('ElementsTutorial.TutorialPage.Section')).scrollTo(0,0)
+    }, [])
+    const SectionList = Elemento.useObjectState(pathWith('SectionList'), new ListElement.State({selectedItem: 0, selectAction: SectionList_selectAction}))
     const CurrentSection = Elemento.useObjectState(pathWith('CurrentSection'), new Data.State({value: SectionList.selectedItem}))
     const StepsList = Elemento.useObjectState(pathWith('StepsList'), new ListElement.State({}))
-    const CurrentStep = Elemento.useObjectState(pathWith('CurrentStep'), new Data.State({value: StepsList.selectedItem}))
+    const Next_action = React.useCallback(async () => {
+        await Set(SectionList, ItemAfter(TutData.sections, SectionList.selectedItem))
+    }, [SectionList, TutData])
     Elemento.elementoDebug(eval(Elemento.useDebugExpr()))
 
     return React.createElement(Page, {id: props.path},
@@ -53,13 +60,13 @@ function TutorialPage(props) {
         React.createElement(Data, {path: pathWith('TutData'), display: false}),
         React.createElement(Layout, {path: pathWith('PageLayout'), horizontal: true, wrap: false, styles: {height: '100%'}},
             React.createElement(Data, {path: pathWith('CurrentSection'), display: false}),
-            React.createElement(ListElement, {path: pathWith('SectionList'), itemContentComponent: TutorialPage_SectionListItem, items: TutData.sections, selectable: true, styles: {border: '1px solid lightgray', height: '100%'}}),
+            React.createElement(ListElement, {path: pathWith('SectionList'), itemContentComponent: TutorialPage_SectionListItem, items: TutData.sections, selectable: true, styles: {border: '1px solid lightgray', height: '100%', minWidth: '20em'}}),
             React.createElement(Layout, {path: pathWith('Section'), horizontal: false, wrap: false},
             React.createElement(TextElement, {path: pathWith('SectionTitle'), styles: {fontSize: 'larger', fontWeight: 'normal'}}, CurrentSection.title),
             React.createElement(TextElement, {path: pathWith('StartText'), styles: {fontWeight: 'normal'}}, CurrentSection.startText),
-            React.createElement(Data, {path: pathWith('CurrentStep'), display: false}),
             React.createElement(ListElement, {path: pathWith('StepsList'), itemContentComponent: TutorialPage_StepsListItem, items: CurrentSection.steps, selectable: true, styles: {flex: '1 0'}}),
             React.createElement(TextElement, {path: pathWith('EndText'), styles: {fontWeight: 'normal'}}, CurrentSection.endText),
+            React.createElement(Button, {path: pathWith('Next'), content: 'Next', appearance: 'outline', action: Next_action}),
     ),
     ),
     )

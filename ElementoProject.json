@@ -25,9 +25,24 @@
               "kind": "Text"
             },
             {
+              "id": "image_1",
+              "name": "Image 1",
+              "properties": {
+                "source": "https://free-images.com/md/2b9d/bird_wildlife_sky_clouds.jpg",
+                "styles": {
+                  "borderWidth": "200",
+                  "width": "200",
+                  "height": "200"
+                }
+              },
+              "kind": "Image"
+            },
+            {
               "id": "numberinput_1",
               "name": "Quantity",
-              "properties": {},
+              "properties": {
+                "label": "How man"
+              },
               "kind": "NumberInput"
             }
           ],
@@ -95,7 +110,8 @@
                       "properties": {
                         "initialValue": {
                           "expr": "SectionList.selectedItem"
-                        }
+                        },
+                        "display": false
                       },
                       "kind": "Data"
                     },
@@ -108,11 +124,15 @@
                         },
                         "styles": {
                           "border": "1px solid lightgray",
-                          "height": "100%"
+                          "height": "100%",
+                          "minWidth": "20em"
                         },
                         "selectable": true,
                         "selectedItem": {
                           "expr": "0"
+                        },
+                        "selectAction": {
+                          "expr": "document.getElementById('ElementsTutorial.TutorialPage.Section').scrollTo(0,0)"
                         }
                       },
                       "elements": [
@@ -162,16 +182,6 @@
                           "kind": "Text"
                         },
                         {
-                          "id": "data_3",
-                          "name": "Current Step",
-                          "properties": {
-                            "initialValue": {
-                              "expr": "StepsList.selectedItem"
-                            }
-                          },
-                          "kind": "Data"
-                        },
-                        {
                           "id": "list_2",
                           "name": "Steps List",
                           "properties": {
@@ -210,7 +220,7 @@
                                       "expr": "Editor[$item.action.command](...$item.action.arguments)"
                                     },
                                     "show": {
-                                      "expr": "$item.action"
+                                      "expr": "!!$item.action"
                                     }
                                   },
                                   "kind": "Button"
@@ -233,6 +243,16 @@
                             }
                           },
                           "kind": "Text"
+                        },
+                        {
+                          "id": "button_2",
+                          "name": "Next",
+                          "properties": {
+                            "action": {
+                              "expr": "Set(SectionList, ItemAfter(TutData.sections, SectionList.selectedItem))"
+                            }
+                          },
+                          "kind": "Button"
                         }
                       ],
                       "kind": "Layout"

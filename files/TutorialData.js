@@ -111,15 +111,15 @@ const data = {
                     action: {command: 'Click', arguments: ['propertyField', '^Name$']}
                 },
                 {
-                    text: 'Enter a name that shows the purpose of this Element, like "Quantity"',
-                    action: {command: 'SetValue', arguments: ['propertyField', '^Name$', 'Quantity']}
+                    text: 'Enter a name that shows the purpose of this Element, like "Size"',
+                    action: {command: 'SetValue', arguments: ['propertyField', '^Name$', 'Size']}
                 },
                 {
                     text: 'Press Enter or click elsewhere on the page to confirm the name change',
                     action: {command: 'Click', arguments: ['propertyField', '^Notes$']}
                 },
             ],
-            endText: `You will now see the item in the Navigator is called "Quantity", and the name of the box in the Preview will also change.`,
+            endText: `You will now see the item in the Navigator is called "Size", and the name of the box in the Preview will also change.`,
         },
         {
             id: 'selecting',
@@ -143,24 +143,20 @@ const data = {
              
             The purpose of many properties will be obvious, but if you need to know more, click Help and head to the Elements Reference section.
             
-            Try changing some properties now on the Quantity Element you have just inserted:`,
+            Try changing some properties now on the Size Element you have just inserted:`,
             steps: [
                 {
-                    text: 'Click on the Quantity element to select it',
-                    action: {command: 'Click', arguments: ['treeItem', 'Quantity']}
+                    text: 'Click on the Size element to select it',
+                    action: {command: 'Click', arguments: ['treeItem', 'Size']}
                 },
                 {
-                    text: 'Enter a new value in the Label property (such as "How many?"), and see the name of the Quantity box on the Preview change.',
+                    text: 'Enter a new value in the Label property (such as "How big?"), and see the name of the Size box on the Preview change.',
                     action: {command: 'SetValue', arguments: ['propertyField', 'Label', 'How many?']}
                 },
                 {
-                    text: `Enter a number in the Initial Value property (such as 20), and see this displayed on the Quantity box on the Preview.
+                    text: `Enter a number in the Initial Value property (such as 20), and see this displayed on the Size box on the Preview.
                     Note that if you have already typed something into this box, that will override the Initial Value`,
                     action: {command: 'SetValue', arguments: ['propertyField', 'Initial Value', '20']}
-                },
-                {
-                    text: `Set the Read Only property to Yes, and see that you can no longer type in the Quantity box.`,
-                    action: {command: 'SetValue', arguments: ['propertyField', 'Read Only', 'Yes']}
                 },
             ],
             endText: `If you want to undo any of these changes, click in the Properties panel and use the Undo command - Control-Z (Command-Z on Mac)`,
@@ -265,12 +261,12 @@ const data = {
             
             You can even copy from one Project and paste into another.
             
-            Let's try copying the Image 1 element and pasting the copy at the end of the Page:
+            Let's try copying the Title element and pasting the copy at the end of the Page:
             `,
             steps: [
                 {
-                    text: 'Click on the Image 1 element to select it.',
-                    action: {command: 'Click', arguments: ['treeItem', 'Image 1']}
+                    text: 'Click on the Title element to select it.',
+                    action: {command: 'Click', arguments: ['treeItem', 'Title']}
                 },
                 {
                     text: 'Click the Edit menu at the top',
@@ -281,8 +277,8 @@ const data = {
                     action: {command: 'Click', arguments: ['menuItem', 'Copy']}
                 },
                 {
-                    text: 'Click on the Quantity element to select it.',
-                    action: {command: 'Click', arguments: ['treeItem', 'Quantity']}
+                    text: 'Click on the Size element to select it.',
+                    action: {command: 'Click', arguments: ['treeItem', 'Size']}
                 },
                 {
                     text: 'Click the Edit menu at the top',
@@ -293,9 +289,69 @@ const data = {
                     action: {command: 'Click', arguments: ['menuItem', 'Paste After']}
                 },
             ],
-            endText: `You should now see another Image 1 element below the Quantity, and the same change on the Preview.
+            endText: `You should now see another Title element below the Size, and the same change on the Preview.
             
             You should change the name of the new pasted Element to avoid confusion and possible program errors.
+            `,
+        },
+      {
+            id: 'delete',
+            title: 'Delete an Element',
+            startText: `Sometimes you will decide you did the wrong thing, or you just don't need an Element any more.
+            
+            Let's try deleting the copy of the Title that you pasted in:
+            `,
+            steps: [
+                {
+                    text: 'Click on the Title element to select it.',
+                    action: {command: 'Click', arguments: ['treeItem', 'Title']}
+                },
+                {
+                    text: 'Click the Edit menu at the top',
+                    action: {command: 'Click', arguments: ['menuButton', 'Edit']}
+                },
+                {
+                    text: 'Click the Delete option',
+                    action: {command: 'Click', arguments: ['menuItem', 'Delete']}
+                },
+                {
+                    text: 'You will see another little menu to confirm the deletion.  Click the Yes option.',
+                    action: {command: 'Click', arguments: ['treeItem', 'Yes - delete Title']}
+                },
+            ],
+            endText: `You should now see the second Title disappear.
+            `,
+        },
+      {
+            id: 'formula',
+            title: 'Set a property to a Formula',
+            startText: `There is another tutorial to introduce you to Formulas, but lets just try out a really simple one to give you a taste of what they can do.
+            
+            Let's make the size of the image depend on what you enter in the Size box, by using a Formula in the image's Height and Width:
+            `,
+            steps: [
+                {
+                    text: 'Click on the Image 1 element to select it.',
+                    action: {command: 'Click', arguments: ['treeItem', 'Image 1']}
+                },
+                {
+                    text: 'Find the Height property and click the ABC button beside it so it changes to FX=.',
+                    action: {command: 'Click', arguments: ['propertyTypeButton', '^Height$']}
+                },
+                {
+                    text: 'Enter the name Size in the Height property',
+                    action: {command: 'SetValue', arguments: ['propertyField', '^Height$', 'Size']}
+                },
+                {
+                    text: 'Find the Width property and click the ABC button beside it so it changes to FX=.',
+                    action: {command: 'Click', arguments: ['propertyTypeButton', '^Width$']}
+                },
+                {
+                    text: 'Enter the name Size in the Width property',
+                    action: {command: 'SetValue', arguments: ['propertyField', '^Width$', 'Size']}
+                },
+            ],
+            endText: `You can now enter a number in the Size box and see the image change size.  Or even click and hold the up and down buttons to change it continuously
             `,
         },
         {

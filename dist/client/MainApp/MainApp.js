@@ -5,14 +5,14 @@ const {React} = Elemento
 // MainPage.js
 function MainPage(props) {
     const pathWith = name => props.path + '.' + name
-    const {Page, TextElement, Image, NumberInput} = Elemento.components
-    const Quantity = Elemento.useObjectState(pathWith('Quantity'), new NumberInput.State({}))
+    const {Page, Image, TextElement, NumberInput} = Elemento.components
+    const Size = Elemento.useObjectState(pathWith('Size'), new NumberInput.State({}))
     Elemento.elementoDebug(eval(Elemento.useDebugExpr()))
 
     return React.createElement(Page, {id: props.path},
+        React.createElement(Image, {path: pathWith('Image1'), source: 'https://free-images.com/md/2b9d/bird_wildlife_sky_clouds.jpg', styles: {height: Size, width: Size}}),
         React.createElement(TextElement, {path: pathWith('Title'), styles: {fontSize: 24}}, 'Elements Tutorial App'),
-        React.createElement(Image, {path: pathWith('Image1'), source: 'https://free-images.com/md/2b9d/bird_wildlife_sky_clouds.jpg', styles: {borderWidth: '200', width: '200', height: '200'}}),
-        React.createElement(NumberInput, {path: pathWith('Quantity'), label: 'How man'}),
+        React.createElement(NumberInput, {path: pathWith('Size'), label: 'How man'}),
     )
 }
 

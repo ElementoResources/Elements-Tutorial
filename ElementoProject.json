@@ -14,6 +14,22 @@
           "properties": {},
           "elements": [
             {
+              "id": "image_1",
+              "name": "Image 1",
+              "properties": {
+                "source": "https://free-images.com/md/2b9d/bird_wildlife_sky_clouds.jpg",
+                "styles": {
+                  "height": {
+                    "expr": "Size"
+                  },
+                  "width": {
+                    "expr": "Size"
+                  }
+                }
+              },
+              "kind": "Image"
+            },
+            {
               "id": "text_1",
               "name": "Title",
               "properties": {
@@ -25,21 +41,8 @@
               "kind": "Text"
             },
             {
-              "id": "image_1",
-              "name": "Image 1",
-              "properties": {
-                "source": "https://free-images.com/md/2b9d/bird_wildlife_sky_clouds.jpg",
-                "styles": {
-                  "borderWidth": "200",
-                  "width": "200",
-                  "height": "200"
-                }
-              },
-              "kind": "Image"
-            },
-            {
               "id": "numberinput_1",
-              "name": "Quantity",
+              "name": "Size",
               "properties": {
                 "label": "How man"
               },

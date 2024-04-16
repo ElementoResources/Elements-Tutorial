@@ -11,7 +11,7 @@ function MainPage(props) {
 
     return React.createElement(Page, {id: props.path},
         React.createElement(Image, {path: pathWith('Image1'), source: 'https://free-images.com/md/2b9d/bird_wildlife_sky_clouds.jpg', styles: {height: Size, width: Size}}),
-        React.createElement(TextElement, {path: pathWith('Title'), styles: {fontSize: 24}}, 'Elements Tutorial App'),
+        React.createElement(TextElement, {path: pathWith('Title'), styles: {fontSize: 24, borderStyle: 'solid', borderWidth: '4', borderColor: 'green', borderRadius: '10'}}, 'Elements Tutorial App'),
         React.createElement(NumberInput, {path: pathWith('Size'), label: 'How man'}),
     )
 }

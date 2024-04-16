@@ -35,7 +35,11 @@
               "properties": {
                 "content": "Elements Tutorial App",
                 "styles": {
-                  "fontSize": 24
+                  "fontSize": 24,
+                  "borderStyle": "solid",
+                  "borderWidth": "4",
+                  "borderColor": "green",
+                  "borderRadius": "10"
                 }
               },
               "kind": "Text"
@@ -75,7 +79,7 @@
               "elements": [
                 {
                   "id": "text_2",
-                  "name": "Title",
+                  "name": "Tutorial Title",
                   "properties": {
                     "content": "All about Elements",
                     "styles": {
@@ -135,7 +139,7 @@
                           "expr": "0"
                         },
                         "selectAction": {
-                          "expr": "document.getElementById('ElementsTutorial.TutorialPage.Section').scrollTo(0,0)"
+                          "expr": "document.querySelector('[id$=TutorialSection]').scrollTo(0,0)"
                         }
                       },
                       "elements": [
@@ -154,7 +158,7 @@
                     },
                     {
                       "id": "layout_2",
-                      "name": "Section",
+                      "name": "Tutorial Section",
                       "properties": {},
                       "elements": [
                         {
@@ -220,7 +224,7 @@
                                   "properties": {
                                     "appearance": "link",
                                     "action": {
-                                      "expr": "Editor[$item.action.command](...$item.action.arguments)"
+                                      "expr": "let target = $item.action.target == 'Preview' ? Preview : Editor\ntarget[$item.action.command](...$item.action.arguments)"
                                     },
                                     "show": {
                                       "expr": "!!$item.action"
@@ -253,6 +257,9 @@
                           "properties": {
                             "action": {
                               "expr": "Set(SectionList, ItemAfter(TutData.sections, SectionList.selectedItem))"
+                            },
+                            "show": {
+                              "expr": "!!ItemAfter(TutData.sections, SectionList.selectedItem)"
                             }
                           },
                           "kind": "Button"

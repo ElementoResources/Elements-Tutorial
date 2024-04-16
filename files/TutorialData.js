@@ -26,7 +26,7 @@ const data = {
             
             You can undo any changes with Control-Z (Command-Z on Mac) or the Undo option on the Edit menu.
             
-            If you are the type who would like to do some background reading, click Help at the top and look for the section called "Elements".`
+            If you are the type who would like to do some background reading, click Help at the top, then Reference and look for the section called "Elements".`
         },
         {
             id: 'what',
@@ -50,11 +50,11 @@ const data = {
             startText: `To get started, create a new Project to work in.`,
             steps: [
                 {
-                    text: 'Click the File menu at the top',
+                    text: 'Click the File menu button at the top',
                     action: {command: 'Click', arguments: ['menuButton', 'File']}
                 },
                 {
-                    text: 'Click New',
+                    text: 'Click New in the menu',
                     action: {command: 'Click', arguments: ['menuItem', 'New']}
                 },
                 {
@@ -62,7 +62,7 @@ const data = {
                     action: {command: 'SetValue', arguments: ['id', 'projectName', 'My Elements Tutorial']}
                 },
                 {
-                    text: 'Click Create',
+                    text: 'Click the Create button',
                     action: {command: 'Click', arguments: ['button', 'Create']}
                 }
             ]
@@ -79,15 +79,15 @@ const data = {
                     action: {command: 'EnsureTreeItemsExpanded', arguments: ['Main App', 'Main Page']}
                 },
                 {
-                    text: 'Click on the Title element to select it',
+                    text: 'Click on the Title element in the Navigator to select it',
                     action: {command: 'Click', arguments: ['treeItem', 'Title']}
                 },
                 {
-                    text: 'Click the Insert menu at the top',
+                    text: 'Click the Insert menu button at the top',
                     action: {command: 'Click', arguments: ['menuButton', 'Insert']}
                 },
                 {
-                    text: 'Click Number Input',
+                    text: 'Click Number Input in the menu',
                     action: {command: 'Click', arguments: ['menuItem', 'Number Input']}
                 },
             ],
@@ -103,7 +103,7 @@ const data = {
                        Let's rename the Number Input 1 Element you have just added.`,
             steps: [
                 {
-                    text: 'Click on the Number Input 1 element to select it',
+                    text: 'Click on the Number Input 1 element in the Navigator to select it',
                     action: {command: 'Click', arguments: ['treeItem', 'Number Input 1']}
                 },
                 {
@@ -131,7 +131,7 @@ const data = {
             If you don't see the Element, click the + symbols in the Navigator to open up Elements that contain others (such as Pages). 
             (When your Project gets much bigger you can also click the - symbols to close up parts of Navigator tree).`,
             steps: [
-                {text: `Click on few things in the Navigator to see what happens`}
+                {text: `Click on a few things in the Navigator to see what happens`}
             ],
             endText: `Advanced tip: if you want to select more than one Element, hold down the Control key (Command on Mac) while you click.`,
         },
@@ -141,12 +141,12 @@ const data = {
             startText: `Each Element has properties (or settings) that adjust what how it appears and what it does.  
             You will usually need to change at least one or two of these. 
              
-            The purpose of many properties will be obvious, but if you need to know more, click Help and head to the Elements Reference section.
+            The purpose of many properties will be obvious, but if you need to know more, click the Help button at the top and head to the Elements Reference section.
             
             Try changing some properties now on the Size Element you have just inserted:`,
             steps: [
                 {
-                    text: 'Click on the Size element to select it',
+                    text: 'Click on the Size element in the Navigator to select it',
                     action: {command: 'Click', arguments: ['treeItem', 'Size']}
                 },
                 {
@@ -174,11 +174,11 @@ const data = {
                     action: {command: 'EnsureTreeItemsExpanded', arguments: ['Main App', 'Main Page']}
                 },
                 {
-                    text: 'Click on the Title element to select it',
+                    text: 'Click on the Title element in the Navigator to select it',
                     action: {command: 'Click', arguments: ['treeItem', 'Title']}
                 },
                 {
-                    text: 'Click the Insert menu at the top',
+                    text: 'Click the Insert menu button at the top',
                     action: {command: 'Click', arguments: ['menuButton', 'Insert']}
                 },
                 {
@@ -186,7 +186,7 @@ const data = {
                     action: {command: 'Click', arguments: ['menuItem', 'Before']}
                 },
                 {
-                    text: 'Click Image',
+                    text: 'Click Image on the right of the menu',
                     action: {command: 'Click', arguments: ['menuItem', 'Image']}
                 },
                 {
@@ -210,7 +210,7 @@ const data = {
             Lets just try changing one or two of the obvious ones so you get a feel for it.  You will need to scroll up and down the Styles properties to find them - they are all in alphabetical order.`,
             steps: [
                 {
-                    text: 'Click on the Image 1 element to select it',
+                    text: 'Click on the Image 1 element in the Navigator to select it',
                     action: {command: 'Click', arguments: ['treeItem', 'Image 1']}
                 },
                 {
@@ -253,9 +253,9 @@ const data = {
             endText: `You should now see the Image 1 element below the Title, and the same change on the Preview.`,
         },
       {
-            id: 'copy-paste',
+            id: 'copy_paste',
             title: 'Copy and Paste an Element',
-            startText: `Just like in other apps like spreadsheets or text documents, you can copy, cut and paste Elements.
+            startText: `Just as in other apps like spreadsheets or text documents, you can copy, cut and paste Elements.
             
             This can be useful if you want an Element similar to one you have set up in another part of your Project.
             
@@ -265,11 +265,11 @@ const data = {
             `,
             steps: [
                 {
-                    text: 'Click on the Title element to select it.',
+                    text: 'Click on the Title element in the Navigator to select it.',
                     action: {command: 'Click', arguments: ['treeItem', 'Title']}
                 },
                 {
-                    text: 'Click the Edit menu at the top',
+                    text: 'Click the Edit menu button at the top',
                     action: {command: 'Click', arguments: ['menuButton', 'Edit']}
                 },
                 {
@@ -277,7 +277,7 @@ const data = {
                     action: {command: 'Click', arguments: ['menuItem', 'Copy']}
                 },
                 {
-                    text: 'Click on the Size element to select it.',
+                    text: 'Click on the Size element in the Navigator to select it.',
                     action: {command: 'Click', arguments: ['treeItem', 'Size']}
                 },
                 {
@@ -288,10 +288,20 @@ const data = {
                     text: 'Click the Paste After option',
                     action: {command: 'Click', arguments: ['menuItem', 'Paste After']}
                 },
+                {
+                    text: 'Click on the copied Title element in the Navigator to select it',
+                    action: {command: 'Click', arguments: ['treeItem', 'Title', 1]}
+                },
+                {
+                    text: 'Change the name of the copied element to "Title 2" to avoid confusion',
+                    action: {command: 'SetValue', arguments: ['propertyField', '^Name$', 'Title 2']}
+                },
+                {
+                    text: 'Press Enter or click elsewhere on the page to confirm the name change',
+                    action: {command: 'Click', arguments: ['propertyField', '^Notes$']}
+                },
             ],
-            endText: `You should now see another Title element below the Size, and the same change on the Preview.
-            
-            You should change the name of the new pasted Element to avoid confusion and possible program errors.
+            endText: `You should now see the copied Title element below the Size, and the same change on the Preview.
             `,
         },
       {
@@ -303,11 +313,11 @@ const data = {
             `,
             steps: [
                 {
-                    text: 'Click on the Title element to select it.',
-                    action: {command: 'Click', arguments: ['treeItem', 'Title']}
+                    text: 'Click on the Title 2 element in the Navigator to select it.',
+                    action: {command: 'Click', arguments: ['treeItem', 'Title 2']}
                 },
                 {
-                    text: 'Click the Edit menu at the top',
+                    text: 'Click the Edit menu button at the top',
                     action: {command: 'Click', arguments: ['menuButton', 'Edit']}
                 },
                 {
@@ -316,7 +326,7 @@ const data = {
                 },
                 {
                     text: 'You will see another little menu to confirm the deletion.  Click the Yes option.',
-                    action: {command: 'Click', arguments: ['treeItem', 'Yes - delete Title']}
+                    action: {command: 'Click', arguments: ['menuItem', 'Yes - delete Title 2']}
                 },
             ],
             endText: `You should now see the second Title disappear.
@@ -331,11 +341,11 @@ const data = {
             `,
             steps: [
                 {
-                    text: 'Click on the Image 1 element to select it.',
+                    text: 'Click on the Image 1 element in the Navigator to select it.',
                     action: {command: 'Click', arguments: ['treeItem', 'Image 1']}
                 },
                 {
-                    text: 'Find the Height property and click the ABC button beside it so it changes to FX=.',
+                    text: 'Find the Height property in the Properties panel and click the ABC button beside it so it changes to FX=.',
                     action: {command: 'Click', arguments: ['propertyTypeButton', '^Height$']}
                 },
                 {
@@ -358,6 +368,8 @@ const data = {
             id: 'wrapup',
             title: 'Where to go next',
             startText: `OK - congratulations on finishing the Elements Tutorial!
+            
+            You now know how to work with Elements, and you have seen a few of the basic ones.  Other tutorials will introduce you to more advanced Elements.
             
             The other core thing you need to know to get going with Elemento is Formulas, so you may want to follow that tutorial next.
             

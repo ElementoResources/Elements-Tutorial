@@ -25,7 +25,8 @@ function TutorialPage_StepsListItem(props) {
     const {Layout, TextElement, Button} = Elemento.components
     const {Editor, Preview} = Elemento
     const ShowMe_action = React.useCallback(async () => {
-        await Editor[$item.action.command](...$item.action.arguments)
+        let target = $item.action.target == 'Preview' ? Preview : Editor
+        await target[$item.action.command](...$item.action.arguments)
     }, [$item])
 
     return React.createElement(React.Fragment, null,
@@ -45,7 +46,7 @@ function TutorialPage(props) {
     const {Set} = Elemento.appFunctions
     const TutData = Elemento.useObjectState(pathWith('TutData'), new Data.State({value: TutorialData()}))
     const SectionList_selectAction = React.useCallback(async ($item) => {
-        await (await document.getElementById('ElementsTutorial.TutorialPage.Section')).scrollTo(0,0)
+        await (await document.querySelector('[id$=TutorialSection]')).scrollTo(0,0)
     }, [])
     const SectionList = Elemento.useObjectState(pathWith('SectionList'), new ListElement.State({selectedItem: 0, selectAction: SectionList_selectAction}))
     const CurrentSection = Elemento.useObjectState(pathWith('CurrentSection'), new Data.State({value: SectionList.selectedItem}))
@@ -56,17 +57,17 @@ function TutorialPage(props) {
     Elemento.elementoDebug(eval(Elemento.useDebugExpr()))
 
     return React.createElement(Page, {id: props.path},
-        React.createElement(TextElement, {path: pathWith('Title'), show: false, styles: {fontSize: '20', color: '#777'}}, 'All about Elements'),
+        React.createElement(TextElement, {path: pathWith('TutorialTitle'), show: false, styles: {fontSize: '20', color: '#777'}}, 'All about Elements'),
         React.createElement(Data, {path: pathWith('TutData'), display: false}),
         React.createElement(Layout, {path: pathWith('PageLayout'), horizontal: true, wrap: false, styles: {height: '100%'}},
             React.createElement(Data, {path: pathWith('CurrentSection'), display: false}),
             React.createElement(ListElement, {path: pathWith('SectionList'), itemContentComponent: TutorialPage_SectionListItem, items: TutData.sections, selectable: true, styles: {border: '1px solid lightgray', height: '100%', minWidth: '20em'}}),
-            React.createElement(Layout, {path: pathWith('Section'), horizontal: false, wrap: false},
+            React.createElement(Layout, {path: pathWith('TutorialSection'), horizontal: false, wrap: false},
             React.createElement(TextElement, {path: pathWith('SectionTitle'), styles: {fontSize: 'larger', fontWeight: 'normal'}}, CurrentSection.title),
             React.createElement(TextElement, {path: pathWith('StartText'), styles: {fontWeight: 'normal'}}, CurrentSection.startText),
             React.createElement(ListElement, {path: pathWith('StepsList'), itemContentComponent: TutorialPage_StepsListItem, items: CurrentSection.steps, selectable: true, styles: {flex: '1 0'}}),
             React.createElement(TextElement, {path: pathWith('EndText'), styles: {fontWeight: 'normal'}}, CurrentSection.endText),
-            React.createElement(Button, {path: pathWith('Next'), content: 'Next', appearance: 'outline', action: Next_action}),
+            React.createElement(Button, {path: pathWith('Next'), content: 'Next', appearance: 'outline', show: !!ItemAfter(TutData.sections, SectionList.selectedItem), action: Next_action}),
     ),
     ),
     )

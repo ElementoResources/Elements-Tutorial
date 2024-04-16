@@ -151,7 +151,7 @@ const data = {
                 },
                 {
                     text: 'Enter a new value in the Label property (such as "How big?"), and see the name of the Size box on the Preview change.',
-                    action: {command: 'SetValue', arguments: ['propertyField', 'Label', 'How many?']}
+                    action: {command: 'SetValue', arguments: ['propertyField', 'Label', 'How big?']}
                 },
                 {
                     text: `Enter a number in the Initial Value property (such as 20), and see this displayed on the Size box on the Preview.
@@ -373,7 +373,7 @@ const data = {
             
             The other core thing you need to know to get going with Elemento is Formulas, so you may want to follow that tutorial next.
             
-            Any time you want to know more about Elements, check out the Help.  There is a section called "Elements" that explains generally what they are and what they do, and another called "Elements Reference" that describes each one in detail.`,
+            Any time you want to know more about Elements, check out the Reference Guide under Help.  There is a section called "Elements" that explains generally what they are and what they do, and another called "Elements Reference" that describes each one in detail.`,
             steps: [],
             endText: `And don't forget to just do things and experiment.  You can carry on right now in this tutorial Project, or you can just create a new Project at any time to try something out.`,
         },
